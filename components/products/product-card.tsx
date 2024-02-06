@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { Product } from "@/types";
 import { Currency } from "@/components/ui/currency";
+import { Button } from "../ui/button";
+import { ExpandIcon, ShoppingCartIcon } from "lucide-react";
 
 interface ProductCard {
   data: Product;
@@ -17,7 +21,24 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
           className="aspect-square object-cover rounded-md"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-          <div className="flex gap-x-6 justify-center"></div>
+          <div className="flex gap-x-6 justify-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => {}}
+              className="bg-white rounded-full hover:bg-white hover:scale-110 transition"
+            >
+              <ExpandIcon size={20} className="text-gray-600" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => {}}
+              className="bg-white rounded-full hover:bg-white hover:scale-110 transition"
+            >
+              <ShoppingCartIcon size={20} className="text-gray-600" />
+            </Button>
+          </div>
         </div>
       </div>
       <div>

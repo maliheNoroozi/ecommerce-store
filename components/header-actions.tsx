@@ -4,11 +4,9 @@ import { ShoppingBagIcon } from "lucide-react";
 export const HeaderActions = () => {
   return (
     <div className="ml-auto">
-      <Button className="relative p-0">
-        <ShoppingBagIcon size={20} />
-        <span className="rounded-full bg-black text-white absolute left-[10px] top-[-8px] z-10 min-w-4 h-4 p-2 flex items-center justify-center">
-          0
-        </span>
+      <Button className="rounded-3xl">
+        <ShoppingBagIcon size={20} className="mr-2" />
+        <span className="text-white">0</span>
       </Button>
     </div>
   );
