@@ -26,3 +26,8 @@ export const getProducts = async (
   const response = await fetch(url);
   return response.json();
 };
+
+export const getProduct = async (id: Product["id"]): Promise<Product> => {
+  const response = await fetch(`${URL}/${id}`);
+  return response.json();
+};
