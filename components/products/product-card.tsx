@@ -6,6 +6,8 @@ import { Currency } from "@/components/ui/currency";
 import { Button } from "../ui/button";
 import { ExpandIcon, ShoppingCartIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { usePreviewModal } from "@/hooks/use-preview-modal";
+import { MouseEventHandler } from "react";
 
 interface ProductCard {
   data: Product;
@@ -13,9 +15,15 @@ interface ProductCard {
 
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const router = useRouter();
+  const previewModal = usePreviewModal();
 
   const handleClick = () => {
     router.push(`/products/${data.id}`);
+  };
+
+  const handlePreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    previewModal.onOpen(data);
   };
 
   return (
@@ -35,7 +43,7 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {}}
+              onClick={handlePreview}
               className="bg-white rounded-full hover:bg-white hover:scale-110 transition"
             >
               <ExpandIcon size={20} className="text-gray-600" />
