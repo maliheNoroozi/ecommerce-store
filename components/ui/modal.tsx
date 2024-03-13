@@ -2,8 +2,7 @@
 
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CloseButton } from "@/components/ui/close-button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -30,9 +29,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <div className="absolute right-4 top-4">
-                    <Button onClick={onClose}>
-                      <XIcon size={15} />
-                    </Button>
+                    <CloseButton onClick={onClose} />
                   </div>
                   {children}
                 </div>
