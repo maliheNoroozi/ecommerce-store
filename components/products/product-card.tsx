@@ -8,6 +8,7 @@ import { ExpandIcon, ShoppingCartIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { usePreviewModal } from "@/hooks/use-preview-modal";
 import { MouseEventHandler } from "react";
+import { useCart } from "@/hooks/use-cart";
 
 interface ProductCard {
   data: Product;
@@ -16,6 +17,7 @@ interface ProductCard {
 export const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const router = useRouter();
   const previewModal = usePreviewModal();
+  const cart = useCart();
 
   const handleClick = () => {
     router.push(`/products/${data.id}`);
@@ -24,6 +26,11 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const handlePreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     previewModal.onOpen(data);
+  };
+
+  const handleAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(data);
   };
 
   return (
@@ -51,7 +58,7 @@ export const ProductCard: React.FC<ProductCard> = ({ data }) => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {}}
+              onClick={handleAddToCart}
               className="bg-white rounded-full hover:bg-white hover:scale-110 transition"
             >
               <ShoppingCartIcon size={20} className="text-gray-600" />
