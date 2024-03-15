@@ -21,6 +21,8 @@ export default async function Page({ params, searchParams }: PageProps) {
     sizeId: searchParams.sizeId,
   });
 
+  console.log({ products });
+
   const category = await getCategory(params.categoryId);
 
   return (

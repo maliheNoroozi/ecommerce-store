@@ -14,9 +14,9 @@ export const Navbar: FC<NavbarProps> = ({ data }) => {
   const pathname = usePathname();
 
   const routes = data.map((item) => ({
-    href: `/category/${item.id}`,
+    href: `/categories/${item.id}`,
     label: item.name,
-    active: pathname === `/category/${item.id}`,
+    active: pathname === `/categories/${item.id}`,
   }));
 
   return (

@@ -23,11 +23,11 @@ export const getProducts = async (
       isFeatured: query.isFeatured,
     },
   });
-  const response = await fetch(url);
+  const response = await fetch(url, { next: { revalidate: 60 } });
   return response.json();
 };
 
 export const getProduct = async (id: Product["id"]): Promise<Product> => {
-  const response = await fetch(`${URL}/${id}`);
+  const response = await fetch(`${URL}/${id}`, { next: { revalidate: 60 } });
   return response.json();
 };
